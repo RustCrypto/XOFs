@@ -1,0 +1,13 @@
+[workspace]
+resolver = "3"
+members = [
+    "ascon-xof128",
+    "bash-prg-hash",
+    "cshake",
+    "k12",
+    "shake",
+    "turboshake",
+]
+
+[profile.dev]
+opt-level = 2

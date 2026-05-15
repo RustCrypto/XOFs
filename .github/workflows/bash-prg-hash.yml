@@ -1,0 +1,60 @@
+name: bash-prg-hash
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/bash-prg-hash.yml"
+      - "bash-prg-hash/**"
+      - "Cargo.*"
+  push:
+    branches: master
+
+defaults:
+  run:
+    working-directory: bash-prg-hash
+
+env:
+  CARGO_INCREMENTAL: 0
+  RUSTFLAGS: "-Dwarnings"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - 1.85.0
+          - stable
+        target:
+          - thumbv7em-none-eabi
+          - wasm32-unknown-unknown
+    steps:
+      - uses: actions/checkout@v6
+      - uses: RustCrypto/actions/cargo-cache@master
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          targets: ${{ matrix.target }}
+      - uses: RustCrypto/actions/cargo-hack-install@master
+      - run: cargo hack build --target ${{ matrix.target }} --each-feature
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - 1.85.0
+          - stable
+    steps:
+      - uses: actions/checkout@v6
+      - uses: RustCrypto/actions/cargo-cache@master
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+      - uses: RustCrypto/actions/cargo-hack-install@master
+      - run: cargo hack test --feature-powerset
+
+  minimal-versions:
+    uses: RustCrypto/actions/.github/workflows/minimal-versions.yml@master
+    with:
+      working-directory: ${{ github.workflow }}
