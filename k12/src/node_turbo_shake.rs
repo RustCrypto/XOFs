@@ -125,6 +125,7 @@ mod tests {
     const KT128_CVS_LEN: usize = KT128_CV_LEN * CHUNKS;
     const KT256_CVS_LEN: usize = KT256_CV_LEN * CHUNKS;
 
+    #[allow(clippy::cast_possible_truncation)]
     const DATA: &[u8] = &{
         let mut buf = [0u8; CHUNKS * CHUNK_SIZE];
         let mut i = 0;

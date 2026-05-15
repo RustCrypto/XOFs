@@ -1,3 +1,4 @@
+//! Basic tests
 use ascon_xof128::{AsconCxof128, AsconXof128};
 use core::fmt::Debug;
 use digest::{
@@ -8,11 +9,11 @@ use digest::{
 use hex_literal::hex;
 
 // Test vectors from:
-// https://github.com/ascon/ascon-c/blob/main/crypto_hash/asconxof128/LWC_XOF_KAT_128_512.txt
+// <https://github.com/ascon/ascon-c/blob/main/crypto_hash/asconxof128/LWC_XOF_KAT_128_512.txt>
 digest::new_test!(ascon_xof128_kat, AsconXof128, xof_reset_test);
 
 /// Test vectors from:
-/// https://github.com/ascon/ascon-c/blob/main/crypto_cxof/asconcxof128/LWC_CXOF_KAT_128_512.txt
+/// <https://github.com/ascon/ascon-c/blob/main/crypto_cxof/asconcxof128/LWC_CXOF_KAT_128_512.txt>
 #[test]
 fn ascon_cxof128_kat() {
     digest::dev::blobby::parse_into_structs!(

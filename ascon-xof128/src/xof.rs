@@ -82,7 +82,7 @@ impl Reset for AsconXof128 {
 
 impl AlgorithmName for AsconXof128 {
     #[inline]
-    fn write_alg_name(f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+    fn write_alg_name(f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.write_str("Ascon-XOF128")
     }
 }

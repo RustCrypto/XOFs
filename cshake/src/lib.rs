@@ -6,8 +6,6 @@
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![forbid(unsafe_code)]
-#![warn(missing_docs, missing_debug_implementations)]
-#![warn(unreachable_pub)]
 
 pub use digest;
 
@@ -56,6 +54,8 @@ impl<const RATE: usize> CShake<RATE> {
     ///
     /// Note that the function name is intended for use by NIST and should only be set to
     /// values defined by NIST. You probably don't need to use this function.
+    #[must_use]
+    #[allow(clippy::missing_panics_doc, reason = "the method is panic-free")]
     pub fn new_with_function_name(function_name: &[u8], customization: &[u8]) -> Self {
         const {
             assert!(RATE == 168 || RATE == 136, "unsupported rate");
@@ -77,7 +77,7 @@ impl<const RATE: usize> CShake<RATE> {
         fn left_encode(val: u64, b: &mut [u8; 9]) -> &[u8] {
             b[1..].copy_from_slice(&val.to_be_bytes());
             let i = b[1..8].iter().take_while(|&&a| a == 0).count();
-            b[i] = (8 - i) as u8;
+            b[i] = u8::try_from(8 - i).expect("the result always fits into u8");
             &b[i..]
         }
 

@@ -1,3 +1,4 @@
+//! Basic tests
 use digest::dev::xof_reset_test;
 use digest::new_test;
 

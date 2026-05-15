@@ -30,7 +30,9 @@ pub struct AsconCxof128 {
 
 impl TryCustomizedInit for AsconCxof128 {
     type Error = InvalidCustomizationError;
+
     #[inline]
+    #[allow(clippy::unwrap_in_result)]
     fn try_new_customized(customization: &[u8]) -> Result<Self, InvalidCustomizationError> {
         if customization.len() > MAX_CUSTOMIZATION_LEN {
             return Err(InvalidCustomizationError);
@@ -97,7 +99,7 @@ impl ExtendableOutput for AsconCxof128 {
 
 impl AlgorithmName for AsconCxof128 {
     #[inline]
-    fn write_alg_name(f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+    fn write_alg_name(f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.write_str("Ascon-CXOF128")
     }
 }

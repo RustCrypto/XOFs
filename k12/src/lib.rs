@@ -6,7 +6,6 @@
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![forbid(unsafe_code)]
-#![warn(missing_docs, unreachable_pub)]
 
 pub use digest::{self, ExtendableOutput, Update, XofReader};
 
