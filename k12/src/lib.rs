@@ -8,11 +8,11 @@
 #![forbid(unsafe_code)]
 #![warn(missing_docs, unreachable_pub)]
 
-pub use digest;
+pub use digest::{self, ExtendableOutput, Update, XofReader};
 
 use core::fmt;
 use digest::{
-    CollisionResistance, ExtendableOutput, ExtendableOutputReset, HashMarker, Reset, Update,
+    CollisionResistance, ExtendableOutputReset, HashMarker, Reset,
     common::AlgorithmName,
     consts::{U16, U32},
 };
@@ -40,7 +40,7 @@ use utils::length_encode;
 
 /// KangarooTwelve hasher generic over rate.
 ///
-/// Only `U136` and `U168` rates are supported which correspond to KT256 and KT128 respectively.
+/// Only `136` and `168` rates are supported which correspond to KT256 and KT128 respectively.
 /// Using other rates will result in a compilation error.
 #[derive(Clone)]
 pub struct Kt<const RATE: usize> {

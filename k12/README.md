@@ -8,6 +8,46 @@
 
 Pure Rust implementation of the [KangarooTwelve] family of extendable-output functions (XOF).
 
+## Examples
+
+KangarooTwelve functions have an extendable output, so finalization methods return
+XOF reader from which results of arbitrary length can be read:
+
+```rust
+use k12::{Kt128, Update, ExtendableOutput, XofReader};
+use hex_literal::hex;
+
+let mut hasher = Kt128::default();
+hasher.update(b"abc");
+let mut reader = hasher.finalize_xof();
+let mut buf = [0u8; 10];
+reader.read(&mut buf);
+assert_eq!(buf, hex!("ab174f328c55a5510b0b"));
+reader.read(&mut buf);
+assert_eq!(buf, hex!("209791bf8b60e801a7cf"));
+```
+
+Additionally, KangarooTwelve supports customization:
+
+```rust
+use k12::{CustomRefKt128, Update, ExtendableOutput, XofReader};
+use hex_literal::hex;
+
+let mut hasher = CustomRefKt128::new_customized(b"my customization string");
+hasher.update(b"abc");
+let mut reader = hasher.finalize_xof();
+let mut buf = [0u8; 10];
+reader.read(&mut buf);
+assert_eq!(buf, hex!("fbe2ce557c1b115bfe1f"));
+reader.read(&mut buf);
+assert_eq!(buf, hex!("c9d7b4097c55f0f5ae86"));
+```
+
+`CustomRefKt128/256` keep reference to the customization string, while `CustomKt128/256`
+keep an owned copy of it. Note that the latter types are gated on the `alloc` crate feature.
+
+See the [`digest`] crate docs for additional examples.
+
 ## License
 
 The crate is licensed under either of:
