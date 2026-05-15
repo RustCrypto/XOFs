@@ -5,7 +5,6 @@
     html_favicon_url = "https://raw.githubusercontent.com/RustCrypto/meta/master/logo.svg"
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
-#![forbid(unsafe_code)]
 
 pub use digest::{self, ExtendableOutput, TryCustomizedInit, Update, XofReader};
 
