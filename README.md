@@ -64,3 +64,4 @@ Unless you explicitly state otherwise, any contribution intentionally submitted 
 [//]: # (footnotes)
 
 [XOF]: https://en.wikipedia.org/wiki/Extendable-output_function
+[`digest`]: https://docs.rs/digest
