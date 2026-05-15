@@ -1,3 +1,4 @@
+//! Basic tests
 use core::iter::repeat_n;
 use hex_literal::hex;
 use k12::{
@@ -85,8 +86,8 @@ fn kt128_pat_m() {
         hex!("3c390782a8a4e89fa6367f72feaaf13255c8d95878481d3cd8ce85f58e880af8"),
     ];
     for (i, exp_res) in expected.into_iter().enumerate() {
-        let len = 17usize.pow(i as u32);
-        let m: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let len = 17usize.pow(u32::try_from(i).unwrap());
+        let m = generate_msg(len);
         let result = kt128_digest_and_box(&m, 32);
         assert_eq!(result[..], exp_res);
     }
@@ -125,8 +126,8 @@ fn kt256_pat_m() {
         ),
     ];
     for (i, exp_res) in expected.into_iter().enumerate() {
-        let len = 17usize.pow(i as u32);
-        let m: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let len = 17usize.pow(u32::try_from(i).unwrap());
+        let m = generate_msg(len);
         let result = kt256_digest_and_box(&m, 64);
         assert_eq!(result[..], exp_res);
     }
@@ -141,10 +142,10 @@ fn kt128_pat_c() {
         hex!("75d2f86a2e644566726b4fbcfc5657b9dbcf070c7b0dca06450ab291d7443bcf"),
     ];
     for (i, exp_res) in expected.into_iter().enumerate() {
-        let i = i as u32;
+        let i = u32::try_from(i).unwrap();
         let m: Vec<u8> = repeat_n(0xFF, 2usize.pow(i) - 1).collect();
         let len = 41usize.pow(i);
-        let c: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let c = generate_msg(len);
 
         let mut h = k12::CustomRefKt128::new_customized(&c);
         h.update(&m);
@@ -180,10 +181,10 @@ fn kt256_pat_c() {
         ),
     ];
     for (i, exp_res) in expected.into_iter().enumerate() {
-        let i = i as u32;
+        let i = u32::try_from(i).unwrap();
         let m: Vec<u8> = repeat_n(0xFF, 2usize.pow(i) - 1).collect();
         let len = 41usize.pow(i);
-        let c: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let c = generate_msg(len);
 
         let mut h = k12::CustomRefKt256::new_customized(&c);
         h.update(&m);
@@ -209,7 +210,7 @@ fn kt128_input_multiple_of_chunk_size_minus_one() {
     ];
     for (i, exp_res) in expected.iter().enumerate() {
         let len = 8192 * (i + 1) - 1;
-        let m: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let m = generate_msg(len);
         let result = kt128_digest_and_box(&m, 32);
         assert_eq!(result[..], exp_res[..]);
     }
@@ -226,8 +227,14 @@ fn kt128_input_multiple_of_chunk_size() {
     ];
     for (i, exp_res) in expected.iter().enumerate() {
         let len = 8192 * (i + 1);
-        let m: Vec<u8> = (0..len).map(|j| (j % 251) as u8).collect();
+        let m = generate_msg(len);
         let result = kt128_digest_and_box(&m, 32);
         assert_eq!(result[..], exp_res[..]);
     }
+}
+
+fn generate_msg(len: usize) -> Vec<u8> {
+    (0..len)
+        .map(|j| u8::try_from(j % 251).expect("fits into u8"))
+        .collect()
 }

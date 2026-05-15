@@ -1,10 +1,11 @@
+//! Basic tests
 use digest::{CustomizedInit, ExtendableOutput};
 
 #[derive(Debug, Clone, Copy)]
-pub struct TestVector {
-    pub customization: &'static [u8],
-    pub input: &'static [u8],
-    pub output: &'static [u8],
+struct TestVector {
+    customization: &'static [u8],
+    input: &'static [u8],
+    output: &'static [u8],
 }
 
 pub(crate) fn cshake_test<D>(

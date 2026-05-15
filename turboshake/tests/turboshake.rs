@@ -1,13 +1,14 @@
+//! Basic tests
 use core::fmt::Debug;
 use digest::ExtendableOutput;
 use turboshake::{CTurboShake128, CTurboShake256};
 
 #[derive(Debug, Clone, Copy)]
-pub struct TestVector {
-    pub input: &'static [u8],
-    pub input_pattern_length: &'static [u8],
-    pub output: &'static [u8],
-    pub truncate_output: &'static [u8],
+struct TestVector {
+    input: &'static [u8],
+    input_pattern_length: &'static [u8],
+    output: &'static [u8],
+    truncate_output: &'static [u8],
 }
 
 pub(crate) fn turbo_shake_test<D>(

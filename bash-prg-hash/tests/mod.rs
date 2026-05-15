@@ -1,10 +1,11 @@
+//! Basic tests
 use bash_prg_hash::{
     BashPrgHash1281, BashPrgHash1282, BashPrgHash1921, BashPrgHash1922, BashPrgHash2561,
     BashPrgHash2562,
 };
+use core::fmt::Debug;
 use digest::{ExtendableOutput, TryCustomizedInit, Update};
 use hex_literal::hex;
-use std::fmt::Debug;
 
 #[derive(Debug, Clone, Copy)]
 struct TestVector {

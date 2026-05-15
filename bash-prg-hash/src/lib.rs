@@ -5,7 +5,6 @@
     html_favicon_url = "https://raw.githubusercontent.com/RustCrypto/media/6ee8e381/logo.svg"
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
-#![warn(missing_docs, rust_2018_idioms)]
 #![forbid(unsafe_code)]
 
 pub use digest::{self, Digest};
@@ -63,6 +62,7 @@ impl<const RATE: usize, const CAPACITY: usize> TryCustomizedInit for BashPrgHash
     type Error = InvalidHeaderError;
 
     #[inline]
+    #[allow(clippy::unwrap_in_result)]
     fn try_new_customized(header: &[u8]) -> Result<Self, Self::Error> {
         const {
             assert!(
@@ -71,7 +71,7 @@ impl<const RATE: usize, const CAPACITY: usize> TryCustomizedInit for BashPrgHash
                     (160, 1) | (128, 2) | (144, 1) | (96, 2) | (128, 1) | (64, 2)
                 ),
                 "invalid combination of RATE and CAPACITY"
-            )
+            );
         }
 
         const MAX_HEADER_LEN: usize = 60;
@@ -212,6 +212,14 @@ impl<const RATE: usize, const CAPACITY: usize> XofReader for BashPrgHashReader<R
     }
 }
 
+impl<const RATE: usize, const CAPACITY: usize> fmt::Debug for BashPrgHashReader<RATE, CAPACITY> {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let level = 8 * (192 - RATE) / (2 * CAPACITY);
+        write!(f, "BashPrgHashReader{level}{CAPACITY} {{ ... }}")
+    }
+}
+
 impl<const RATE: usize, const CAPACITY: usize> Drop for BashPrgHashReader<RATE, CAPACITY> {
     #[inline]
     fn drop(&mut self) {
@@ -231,7 +239,7 @@ impl<const RATE: usize, const CAPACITY: usize> digest::zeroize::ZeroizeOnDrop
 }
 
 /// Invalid `bash-prg-hash` header error.
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
 pub struct InvalidHeaderError;
 
 impl fmt::Display for InvalidHeaderError {

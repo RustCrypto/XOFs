@@ -20,6 +20,7 @@ impl<'a, const RATE: usize> CustomRefKt<'a, RATE> {
     /// Note that this is an inherent method and `CustomRefKt` does not implement
     /// the [`CustomizedInit`][digest::CustomizedInit] trait.
     #[inline]
+    #[must_use]
     pub fn new_customized(customization: &'a [u8]) -> Self {
         Self {
             customization,

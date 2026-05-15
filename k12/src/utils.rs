@@ -5,7 +5,7 @@ pub(crate) fn xor_block(state: &mut State1600, block: &[u8]) {
 
     let mut chunks = block.chunks_exact(size_of::<u64>());
     for (s, chunk) in state.iter_mut().zip(&mut chunks) {
-        *s ^= u64::from_le_bytes(chunk.try_into().unwrap());
+        *s ^= u64::from_le_bytes(chunk.try_into().expect("chunk has correct length"));
     }
 
     let rem = chunks.remainder();

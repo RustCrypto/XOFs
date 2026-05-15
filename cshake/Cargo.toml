@@ -26,5 +26,8 @@ default = ["alloc"]
 alloc = ["digest/alloc"]
 zeroize = ["digest/zeroize", "sponge-cursor/zeroize"]
 
+[lints]
+workspace = true
+
 [package.metadata.docs.rs]
 all-features = true
