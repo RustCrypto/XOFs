@@ -71,12 +71,12 @@ dual licensed as above, without any additional terms or conditions.
 [crate-link]: https://crates.io/crates/ascon-xof128
 [docs-image]: https://docs.rs/ascon-xof128/badge.svg
 [docs-link]: https://docs.rs/ascon-xof128/
-[build-image]: https://github.com/RustCrypto/hashes/actions/workflows/ascon-xof128.yml/badge.svg
-[build-link]: https://github.com/RustCrypto/hashes/actions/workflows/ascon-xof128.yml
 [license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
 [rustc-image]: https://img.shields.io/badge/rustc-1.85+-blue.svg
 [chat-image]: https://img.shields.io/badge/zulip-join_chat-blue.svg
 [chat-link]: https://rustcrypto.zulipchat.com/#narrow/stream/260041-hashes
+[build-image]: https://github.com/RustCrypto/XOFs/actions/workflows/ascon-xof128.yml/badge.svg
+[build-link]: https://github.com/RustCrypto/XOFs/actions/workflows/ascon-xof128.yml
 
 [//]: # (general links)
 
