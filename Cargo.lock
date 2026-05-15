@@ -10,7 +10,7 @@ checksum = "f5a0543d9a0a29ecb1d2046beb7547e97941de03228a3f31e15addfc78836049"
 
 [[package]]
 name = "ascon-xof128"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "ascon",
  "digest",
@@ -26,7 +26,7 @@ checksum = "bfed5cd32720841afa8cd58c89a317e9efb0c8083e1b349dae4098f022620353"
 
 [[package]]
 name = "bash-prg-hash"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "bash-f",
  "digest",
@@ -82,7 +82,7 @@ dependencies = [
 
 [[package]]
 name = "cshake"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "digest",
  "hex-literal",
@@ -120,7 +120,7 @@ dependencies = [
 
 [[package]]
 name = "k12"
-version = "0.5.0"
+version = "0.5.1"
 dependencies = [
  "digest",
  "hex-literal",
@@ -166,7 +166,7 @@ dependencies = [
 
 [[package]]
 name = "turboshake"
-version = "0.7.0"
+version = "0.7.1"
 dependencies = [
  "digest",
  "hex-literal",

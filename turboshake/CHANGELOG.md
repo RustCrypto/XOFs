@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.7.1 (UNRELEASED)
 ### Changed
-- Changed repository from [RustCrypto/hashes] to [RustCrypto/XOFs] ([#2])
+- Repository from [RustCrypto/hashes] to [RustCrypto/XOFs] ([#2])
 
 [RustCrypto/hashes]: https://github.com/RustCrypto/hashes
 [RustCrypto/XOFs]: https://github.com/RustCrypto/XOFs
