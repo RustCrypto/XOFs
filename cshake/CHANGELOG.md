@@ -7,27 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.2.0 (2026-05-12)
 ### Added
-- `CShake128Reader` and `CShake256Reader` type aliases ([#855])
+- `CShake128Reader` and `CShake256Reader` type aliases ([RustCrypto/hashes#855])
 
 ### Changed
-- Internal implementation by removing unnecessary buffering ([#849])
-- `Rate: BlockSizes` generic parameter to `const RATE: usize` ([#849])
+- Internal implementation by removing unnecessary buffering ([RustCrypto/hashes#849])
+- `Rate: BlockSizes` generic parameter to `const RATE: usize` ([RustCrypto/hashes#849])
 
 ### Removed
-- Implementations of `BlockSizeUser` ([#856])
+- Implementations of `BlockSizeUser` ([RustCrypto/hashes#856])
 
-[#849]: https://github.com/RustCrypto/hashes/pull/849
-[#855]: https://github.com/RustCrypto/hashes/pull/855
-[#856]: https://github.com/RustCrypto/hashes/pull/856
+[RustCrypto/hashes#849]: https://github.com/RustCrypto/hashes/pull/849
+[RustCrypto/hashes#855]: https://github.com/RustCrypto/hashes/pull/855
+[RustCrypto/hashes#856]: https://github.com/RustCrypto/hashes/pull/856
 
 ## 0.1.1 (2026-04-19)
 ### Fixed
 - Non-compliant initialization when serialized length of function name and customization string
-  is a multiple of the block size ([#834])
+  is a multiple of the block size ([RustCrypto/hashes#834])
 
-[#834]: https://github.com/RustCrypto/hashes/pull/834
+[RustCrypto/hashes#834]: https://github.com/RustCrypto/hashes/pull/834
 
 ## 0.1.0 (2026-04-13)
-- Initial release with implementation moved from the `sha3` crate ([#815])
+- Initial release with implementation moved from the `sha3` crate ([RustCrypto/hashes#815])
 
-[#815]: https://github.com/RustCrypto/hashes/pull/815
+[RustCrypto/hashes#815]: https://github.com/RustCrypto/hashes/pull/815

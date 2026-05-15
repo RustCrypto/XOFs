@@ -7,25 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.7.0 (2026-05-13)
 ### Added
-- `CTurboShake128` and `CTurboShake256` type aliases generic over domain separator ([#866])
+- `CTurboShake128` and `CTurboShake256` type aliases generic over domain separator ([RustCrypto/hashes#866])
 
 ### Changed
-- Internal implementation by removing unnecessary buffering ([#849])
-- `Rate: BlockSizes` generic parameter to `const RATE: usize` ([#849])
+- Internal implementation by removing unnecessary buffering ([RustCrypto/hashes#849])
+- `Rate: BlockSizes` generic parameter to `const RATE: usize` ([RustCrypto/hashes#849])
 - `TurboShake128` and `TurboShake256` type aliases are no longer generic over the domain separator
-  and use the default value instead ([#866])
+  and use the default value instead ([RustCrypto/hashes#866])
 
 ### Removed
 - Implementations of `BlockSizeUser` ([#856])
 
-[#849]: https://github.com/RustCrypto/hashes/pull/849
-[#856]: https://github.com/RustCrypto/hashes/pull/856
-[#866]: https://github.com/RustCrypto/hashes/pull/866
+[RustCrypto/hashes#849]: https://github.com/RustCrypto/hashes/pull/849
+[RustCrypto/hashes#856]: https://github.com/RustCrypto/hashes/pull/856
+[RustCrypto/hashes#866]: https://github.com/RustCrypto/hashes/pull/866
 
 ## 0.6.0 (2026-04-24)
 Note: the crate was transferred to RustCrypto from https://github.com/itzmeanjan/turboshake
 
 ### Changed
-- New implementation moved from the `sha3` crate ([#815])
+- New implementation moved from the `sha3` crate ([RustCrypto/hashes#815])
 
-[#815]: https://github.com/RustCrypto/hashes/pull/815
+[RustCrypto/hashes#815]: https://github.com/RustCrypto/hashes/pull/815
