@@ -1,16 +1,16 @@
 [package]
 name = "bash-prg-hash"
 version = "0.1.1"
-description = "bash-prg-hash function (STB 34.101.77-2020)"
 authors = ["RustCrypto Developers"]
-license = "MIT OR Apache-2.0"
-readme = "README.md"
 edition = "2024"
 rust-version = "1.85"
 documentation = "https://docs.rs/bash-prg-hash"
-repository = "https://github.com/RustCrypto/hashes"
+readme = "README.md"
+repository = "https://github.com/RustCrypto/XOFs"
+license = "MIT OR Apache-2.0"
 keywords = ["belt", "stb", "hash", "digest"]
 categories = ["cryptography", "no-std"]
+description = "bash-prg-hash function (STB 34.101.77-2020)"
 
 [dependencies]
 digest = { version = "0.11.3", default-features = false }
