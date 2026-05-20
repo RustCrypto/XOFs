@@ -13,7 +13,6 @@ members = [
 opt-level = 2
 
 [workspace.lints.clippy]
-unsafe_code = "forbid"
 borrow_as_ptr = "warn"
 cast_lossless = "warn"
 cast_possible_truncation = "warn"
@@ -49,5 +48,6 @@ missing_debug_implementations = "warn"
 missing_docs = "warn"
 trivial_casts = "warn"
 trivial_numeric_casts = "warn"
+unsafe_code = "forbid"
 unused_lifetimes = "warn"
 unused_qualifications = "warn"
